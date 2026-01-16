@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🛍️ Customer Segmentation Studio
+# 🧪 Unsupervised Learning Workbench
 
-### **v2.0 — Multi-Model Clustering Engine**
+### **A Comprehensive Dashboard for Clustering & Dimensionality Reduction**
 
-*Transform Raw Customer Data into Actionable Marketing Intelligence*
+*From Customer Segmentation to Full-Scale ML Experimentation*
 
 ---
 
@@ -14,11 +14,11 @@
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
 [![GitHub](https://img.shields.io/badge/GitHub-WSalim2024-181717?style=flat-square&logo=github)](https://github.com/WSalim2024)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/waqar-salim/)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=flat-square&logo=linkedin)](https://linkedin.com)
 
 <br>
 
-[**Features**](#-key-features) · [**Installation**](#-installation) · [**How It Works**](#-how-it-works) · [**Tech Stack**](#-tech-stack)
+[**Features**](#-key-features--modes) · [**Installation**](#-installation) · [**Tech Stack**](#-tech-stack) · [**Roadmap**](#-future-roadmap)
 
 </div>
 
@@ -26,117 +26,296 @@
 
 ## 📋 Table of Contents
 
-- [Project Overview](#-project-overview)
-- [Key Features](#-key-features)
+- [Project Evolution](#-project-evolution)
+- [Key Features & Modes](#-key-features--modes)
 - [Screenshots](#-screenshots)
-- [Installation](#-installation)
-- [How It Works](#-how-it-works)
 - [Tech Stack](#-tech-stack)
+- [Installation](#-installation)
 - [Directory Structure](#-directory-structure)
+- [Future Roadmap](#-future-roadmap)
 - [Author](#-author)
 
 ---
 
-## 🚀 Project Overview
-
-**Customer Segmentation Studio v2.0** is an interactive Data Science Dashboard that solves a real-world business problem: **Customer Segmentation**.
-
-Built for Marketing Managers and Business Analysts, this tool groups customers based on **Annual Income** vs **Spending Score** using advanced **Unsupervised Machine Learning** — no coding required.
+## 📖 Project Evolution
 
 <div align="center">
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           THE BUSINESS PROBLEM                                  │
+│                           THE EVOLUTION STORY                                   │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│   "We have 1,000 customers. How do we know who to target with which campaign?" │
+│     v1.0                      v2.0                      v3.0                    │
+│   ┌─────────┐              ┌─────────┐              ┌─────────┐                 │
+│   │Customer │              │  Multi  │              │Unsuper- │                 │
+│   │Segment- │    ───►      │  Model  │    ───►      │ vised   │                 │
+│   │ation    │              │ Engine  │              │Learning │                 │
+│   │  Tool   │              │         │              │Workbench│                 │
+│   └─────────┘              └─────────┘              └─────────┘                 │
 │                                                                                 │
-│   ┌───────────────┐         ┌───────────────┐         ┌───────────────┐        │
-│   │   RAW DATA    │   ───►  │   ML ENGINE   │   ───►  │   SEGMENTS    │        │
-│   │               │         │               │         │               │        │
-│   │  CustomerID   │         │  • K-Means    │         │ 💎 VIP Clients │        │
-│   │  Income       │         │  • DBSCAN     │         │ 🎯 Targets     │        │
-│   │  Spending     │         │               │         │ 💵 Savers      │        │
-│   │  ...          │         │               │         │ ⚠️ Outliers    │        │
-│   └───────────────┘         └───────────────┘         └───────────────┘        │
+│   • K-Means only           • + DBSCAN               • + PCA                     │
+│   • 2D data                • Outlier Detection      • + t-SNE                   │
+│   • Basic viz              • Multi-algorithm        • 3D → 2D reduction         │
+│                                                     • Educational focus         │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 </div>
 
-### What's New in v2.0?
+What started as a simple **Customer Segmentation Tool** has evolved into a comprehensive **Unsupervised Learning Workbench**.
 
-| Feature | v1.0 | v2.0 |
-|---------|:----:|:----:|
-| K-Means Clustering | ✅ | ✅ |
-| DBSCAN Clustering | ❌ | ✅ |
-| Outlier Detection | ❌ | ✅ |
-| Multi-Model Switching | ❌ | ✅ |
-| Interactive Hyperparameter Tuning | Basic | Advanced |
+This project now serves as an **educational dashboard** designed to compare different Machine Learning techniques on **high-dimensional data**:
+
+| Dimension | Feature | Description |
+|:---------:|:--------|:------------|
+| **X₁** | Annual Income | Customer's yearly earnings ($k) |
+| **X₂** | Spending Score | Purchase behavior metric (1-100) |
+| **X₃** | Age | Customer age in years |
+
+### The Challenge
+
+With **3 dimensions**, traditional 2D scatter plots can't show the complete picture. This workbench solves that problem by offering:
+
+1. **Clustering Algorithms** — Group similar customers together
+2. **Dimensionality Reduction** — Flatten 3D data into interpretable 2D views
 
 ---
 
-## ✨ Key Features
+## ✨ Key Features & Modes
+
+The Workbench is organized into two powerful modes:
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         WORKBENCH ARCHITECTURE                                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│                        ┌─────────────────────────┐                              │
+│                        │   🧪 UNSUPERVISED       │                              │
+│                        │   LEARNING WORKBENCH    │                              │
+│                        └───────────┬─────────────┘                              │
+│                                    │                                            │
+│                    ┌───────────────┴───────────────┐                            │
+│                    │                               │                            │
+│                    ▼                               ▼                            │
+│         ┌─────────────────────┐       ┌─────────────────────┐                   │
+│         │  🔍 MODE A          │       │  📉 MODE B          │                   │
+│         │  CLUSTER ANALYSIS   │       │  DIMENSIONALITY     │                   │
+│         │                     │       │  REDUCTION          │                   │
+│         │  • K-Means          │       │                     │                   │
+│         │  • DBSCAN           │       │  • PCA              │                   │
+│         │                     │       │  • t-SNE            │                   │
+│         └─────────────────────┘       └─────────────────────┘                   │
+│                                                                                 │
+│         "WHO belongs together?"       "HOW can we SEE the data?"               │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+---
+
+### 🔍 Mode A: Cluster Analysis
+
+**Purpose:** Group customers into meaningful segments based on behavioral similarity.
 
 <table>
 <tr>
 <td width="50%">
 
-### 🔄 Multi-Model Engine
-Switch between two powerful clustering algorithms in real-time:
-- **K-Means** — Standard geometric partitioning
-- **DBSCAN** — Density-based spatial clustering
+#### ⚙️ K-Means Clustering
+*Geometric Partitioning*
 
-*Choose the right tool for your data characteristics.*
+**How it works:**
+Divides data into exactly $k$ groups by minimizing within-cluster distances.
 
-</td>
-<td width="50%">
+**Interactive Controls:**
+- 🎚️ **Clusters ($k$):** Slider from 2 to 10
+- 📈 **Elbow Method:** Visual guide for optimal $k$
 
-### 📐 K-Means Mode
-Includes an interactive **Elbow Method** graph to mathematically determine the optimal number of clusters ($k$).
-
-- Visual WCSS curve
-- Clear elbow point detection
-- Adjustable $k$ slider (2-10)
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-### 🔍 DBSCAN Mode
-Features automatic **Noise Detection** to identify and isolate outliers that don't fit any group.
-
-- Anomaly identification
-- No pre-defined cluster count
-- Discovers arbitrary-shaped clusters
+**Best for:**
+- Well-separated, spherical clusters
+- When you know the approximate number of segments
 
 </td>
 <td width="50%">
 
-### 🎛️ Interactive Tuning
-Sidebar sliders for dynamic hyperparameter adjustment:
+#### 🌐 DBSCAN Clustering
+*Density-Based Spatial Clustering*
 
-- **K-Means:** Number of clusters ($k$)
-- **DBSCAN:** Epsilon ($\varepsilon$) and Min Samples
+**How it works:**
+Finds dense regions and marks sparse points as outliers (noise).
+
+**Interactive Controls:**
+- 🎚️ **Epsilon ($\varepsilon$):** Neighborhood radius
+- 🎚️ **Min Samples:** Minimum points for dense region
+
+**Best for:**
+- Irregular-shaped clusters
+- Automatic outlier detection
+- Unknown number of segments
 
 </td>
 </tr>
 </table>
 
-### 💼 Business Logic Engine
+#### Visualization Features
 
-Automatically interprets clusters into actionable marketing insights:
+| Feature | Description |
+|---------|-------------|
+| 🎨 **Auto Color Mapping** | Each cluster gets a distinct color |
+| ⭐ **Centroid Markers** | K-Means cluster centers highlighted |
+| ⚠️ **Noise Visualization** | DBSCAN outliers shown in distinct color |
+| 📊 **2D Scatterplots** | Income vs Spending with cluster overlay |
 
-| Segment | Characteristics | Recommended Action |
-|---------|----------------|-------------------|
-| 💎 **VIP Customers** | High Income, High Spending | Premium services, exclusive offers |
-| 🎯 **Target Prospects** | High Income, Low Spending | Upselling campaigns |
-| 💵 **Budget Shoppers** | Low Income, High Spending | Loyalty programs, payment plans |
-| 📊 **Standard Customers** | Average metrics | General promotions |
-| ⚠️ **Outliers** (DBSCAN) | Anomalous behavior | Individual analysis |
+#### Outlier Detection (DBSCAN)
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        DBSCAN NOISE DETECTION                                   │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   Spending                                                                      │
+│   Score        ●●●                                                              │
+│      │        ●●●●●         ◆◆◆                                                 │
+│      │         ●●●●        ◆◆◆◆◆                                                │
+│      │          ●●          ◆◆◆         ★ ← Outlier (Noise)                     │
+│      │                                                                          │
+│      │                              ★ ← Outlier (Noise)                         │
+│      │     ■■■■                                                                 │
+│      │    ■■■■■■                                                                │
+│      │     ■■■■         ★ ← Outlier (Noise)                                     │
+│      │                                                                          │
+│      └──────────────────────────────────────────────────────────────────────    │
+│                              Annual Income                                      │
+│                                                                                 │
+│   Legend:  ● Cluster 1   ◆ Cluster 2   ■ Cluster 3   ★ Noise (Outliers)        │
+│                                                                                 │
+│   💡 Outliers = Customers with unusual behavior → Investigate individually     │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+---
+
+### 📉 Mode B: Dimensionality Reduction
+
+**The Problem:**
+
+Our dataset has **3 dimensions** (Income, Spending Score, Age). Human eyes can only perceive 2D effectively. How do we visualize 3D data?
+
+**The Solution:**
+
+Flatten the data from 3D → 2D while preserving meaningful structure.
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                     THE DIMENSIONALITY PROBLEM                                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│        3D DATA (Hard to visualize)              2D PROJECTION (Easy to see)    │
+│        ────────────────────────────             ───────────────────────────     │
+│                                                                                 │
+│              Age                                                                │
+│               │    ● ●                                  ● ●                     │
+│               │  ●     ●                              ●     ●                   │
+│               │    ●                                    ●       ●               │
+│               │        ● ───────────────────►             ●   ●                 │
+│              /│\      ●                              ●  ●    ●                  │
+│             / │ \   ●                                  ●   ●                    │
+│            /  │  \                                       ●                      │
+│           ────┼────── Spending                                                  │
+│          /    │     Score                           PC1 / t-SNE₁                │
+│       Income                                                                    │
+│                                                                                 │
+│        "I can't see patterns!"                  "Now I see the clusters!"       │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+<table>
+<tr>
+<td width="50%">
+
+#### 📐 PCA (Principal Component Analysis)
+*Linear Transformation*
+
+**How it works:**
+Finds the directions (principal components) that capture the most variance in the data.
+
+**Interpretation:**
+- **Global Structure** — Shows overall data spread
+- **Variance Explained** — Quantifies information retained
+- **Linear relationships** preserved
+
+**Best for:**
+- Understanding overall data distribution
+- Feature importance analysis
+- Fast computation
+
+</td>
+<td width="50%">
+
+#### 🌀 t-SNE (t-Distributed SNE)
+*Non-Linear Embedding*
+
+**How it works:**
+Preserves local neighborhoods — points close in 3D stay close in 2D.
+
+**Interpretation:**
+- **Local Clusters** — Reveals groupings
+- **Non-linear patterns** captured
+- **Perplexity** controls neighborhood size
+
+**Best for:**
+- Discovering hidden clusters
+- Visualizing complex relationships
+- Exploratory data analysis
+
+</td>
+</tr>
+</table>
+
+#### PCA vs t-SNE: When to Use Which?
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         PCA vs t-SNE COMPARISON                                 │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│                  PCA                                    t-SNE                   │
+│         "The Big Picture View"                 "The Neighborhood View"          │
+│         ─────────────────────────              ─────────────────────────        │
+│                                                                                 │
+│         ┌─────────────────────┐                ┌─────────────────────┐          │
+│         │    ●                │                │  ●●●      ◆◆◆      │          │
+│         │      ●  ●           │                │ ●●●●●    ◆◆◆◆◆     │          │
+│         │    ●   ●  ●   ●     │                │  ●●●      ◆◆◆      │          │
+│         │  ●    ●    ●    ●   │                │                     │          │
+│         │    ●     ●   ●      │                │     ■■■■            │          │
+│         │       ●   ●         │                │    ■■■■■■           │          │
+│         │         ●           │                │     ■■■■            │          │
+│         └─────────────────────┘                └─────────────────────┘          │
+│                                                                                 │
+│         ✅ Preserves global spread             ✅ Reveals tight clusters        │
+│         ✅ Fast computation                    ✅ Non-linear relationships      │
+│         ✅ Interpretable axes                  ❌ Slower computation            │
+│         ❌ May miss local clusters             ❌ Axes not interpretable        │
+│                                                                                 │
+│         Use first to understand               Use second to find                │
+│         overall structure                     hidden groupings                  │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -144,45 +323,27 @@ Automatically interprets clusters into actionable marketing insights:
 
 <div align="center">
 
-### Elbow Method Visualization
+### Mode A: Cluster Analysis
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                                                                                 │
 │                         [SCREENSHOT PLACEHOLDER]                                │
 │                                                                                 │
-│                    📈 Elbow Method - Optimal K Selection                        │
+│                    🔍 K-Means & DBSCAN Clustering Results                       │
 │                                                                                 │
-│                         Add image: assets/elbow_curve.png                       │
-│                                                                                 │
+│                         Add image: assets/clustering.png                        │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### K-Means Cluster Plot
+### Mode B: Dimensionality Reduction
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                                                                                 │
 │                         [SCREENSHOT PLACEHOLDER]                                │
 │                                                                                 │
-│                    🎯 K-Means Clustering Results                                │
+│                    📉 PCA vs t-SNE Projection Comparison                        │
 │                                                                                 │
-│                         Add image: assets/kmeans_clusters.png                   │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
-
-### DBSCAN with Outlier Detection
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                                                                                 │
-│                         [SCREENSHOT PLACEHOLDER]                                │
-│                                                                                 │
-│                    🔍 DBSCAN Clustering with Noise Points                       │
-│                                                                                 │
-│                         Add image: assets/dbscan_clusters.png                   │
-│                                                                                 │
+│                         Add image: assets/dim_reduction.png                     │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -192,19 +353,46 @@ Automatically interprets clusters into actionable marketing insights:
 
 ---
 
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology | Components | Purpose |
+|:-----:|:----------:|:-----------|:--------|
+| 🐍 | **Python 3.10** | — | Core programming language |
+| 🖥️ | **Streamlit** | — | Interactive web dashboard |
+| 🤖 | **Scikit-Learn** | `KMeans` | Partition-based clustering |
+| | | `DBSCAN` | Density-based clustering |
+| | | `PCA` | Linear dimensionality reduction |
+| | | `TSNE` | Non-linear embedding |
+| | | `StandardScaler` | Feature normalization |
+| 📊 | **Matplotlib** | — | Optimized visualizations |
+
+</div>
+
+### Why These Choices?
+
+| Technology | Rationale |
+|------------|-----------|
+| **Streamlit** | Rapid prototyping, no frontend code needed |
+| **Scikit-Learn** | Industry-standard ML library with consistent API |
+| **Matplotlib** | Memory-optimized for Streamlit deployment |
+
+---
+
 ## 📥 Installation
 
 ### Quick Start
 
 ```bash
 # Clone the repository
-git clone https://github.com/WSalim2024/Customer-Segmentation-Studio.git
+git clone https://github.com/WSalim2024/MCert-Customer-Segmentation-Studio.git
 
 # Navigate to project directory
-cd Customer-Segmentation-Studio
+cd MCert-Customer-Segmentation-Studio
 
 # Install dependencies
-pip install pandas matplotlib seaborn scikit-learn streamlit
+pip install pandas matplotlib scikit-learn streamlit
 
 # Launch the application
 streamlit run app.py
@@ -212,107 +400,59 @@ streamlit run app.py
 
 ### Access the Dashboard
 
-Once launched, open your browser and navigate to:
+Once launched, open your browser:
 
 ```
-http://localhost:8501
+Local URL: http://localhost:8501
 ```
-
----
-
-## 🔬 How It Works
-
-This dashboard offers two distinct clustering approaches. Here's a simple explanation for non-technical users:
-
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    K-MEANS vs DBSCAN: A SIMPLE COMPARISON                       │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│         K-MEANS                                    DBSCAN                       │
-│    "Geometric Grouping"                      "Density Grouping"                 │
-│    ─────────────────────                     ─────────────────────              │
-│                                                                                 │
-│    Think of it as:                           Think of it as:                    │
-│    Dividing a pizza into                     Finding crowded areas              │
-│    equal slices                              at a party                         │
-│                                                                                 │
-│         ┌─────────┐                              ●●●    ●                       │
-│        /    |     \                             ●●●●●                           │
-│       /  ●  | ●    \                            ●●●●     ◆◆◆                    │
-│      /  ●●  |  ●●   \                                   ◆◆◆◆                    │
-│     /───────┼────────\                           ★       ◆◆                     │
-│     \  ●●   |   ●●   /                        (noise)                           │
-│      \ ●    |    ●  /                                                           │
-│       \     |      /                                                            │
-│        \____|_____/                                                             │
-│                                                                                 │
-│    ✅ You decide how many                    ✅ Algorithm decides               │
-│       groups (k)                                how many groups                 │
-│                                                                                 │
-│    ✅ Equal-sized, round                     ✅ Any shape, any size             │
-│       clusters                                  clusters                        │
-│                                                                                 │
-│    ❌ Cannot detect                          ✅ Automatically finds             │
-│       outliers                                  outliers (noise)                │
-│                                                                                 │
-│    Best for: Well-separated,                 Best for: Irregular shapes,        │
-│    spherical customer groups                 finding anomalies                  │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
-
-### K-Means: The Geometric Approach
-
-**How it works:** Divides customers into exactly $k$ groups by minimizing the distance between each customer and their group's center point.
-
-**Key Parameter:**
-- $k$ = Number of clusters (you choose using the Elbow Method)
-
-**Best when:** You know roughly how many segments you want and your data forms round, well-separated groups.
-
----
-
-### DBSCAN: The Density Approach
-
-**How it works:** Finds areas where customers are "crowded together" and groups them. Points in sparse areas are marked as **outliers** (noise).
-
-**Key Parameters:**
-- $\varepsilon$ (Epsilon) = How close points must be to be considered neighbors
-- Min Samples = Minimum points needed to form a dense region
-
-**Best when:** You don't know how many segments exist, your groups have irregular shapes, or you want to identify unusual customers.
-
----
-
-## 🛠️ Tech Stack
-
-<div align="center">
-
-| Layer | Technology | Purpose |
-|:-----:|:----------:|:--------|
-| 🐍 | **Python 3.10** | Core programming language |
-| 🖥️ | **Streamlit** | Interactive web dashboard |
-| 🤖 | **Scikit-Learn** | KMeans, DBSCAN, StandardScaler |
-| 📊 | **Matplotlib** | Base visualizations |
-| 🎨 | **Seaborn** | Enhanced chart aesthetics |
-
-</div>
 
 ---
 
 ## 📁 Directory Structure
 
 ```
-Customer-Segmentation-Studio/
+Unsupervised-Learning-Workbench/
 │
 ├── 📄 app.py                    # Main Streamlit application
 ├── 📄 README.md                 # Project documentation
 └── 📄 .gitignore                # Git ignore rules
+```
+
+---
+
+## 🚀 Future Roadmap
+
+The Workbench continues to evolve. Here's what's planned:
+
+<div align="center">
+
+| Phase | Feature | Status |
+|:-----:|:--------|:------:|
+| 🔮 | **Hierarchical Clustering** — Dendrogram visualization | Planned |
+| 🔮 | **UMAP** — Faster alternative to t-SNE | Planned |
+| 🔮 | **Silhouette Analysis** — Cluster quality metrics | Planned |
+| 🔮 | **Data Upload** — Custom CSV file support | Planned |
+| 🔮 | **Export Results** — Download cluster assignments | Planned |
+| 🔮 | **3D Visualization** — Interactive Plotly 3D scatter | Planned |
+
+</div>
+
+### Contribution Ideas
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                         POTENTIAL ENHANCEMENTS                                  │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   CLUSTERING                    REDUCTION                   EVALUATION          │
+│   ──────────                    ─────────                   ──────────          │
+│                                                                                 │
+│   • Agglomerative              • UMAP                      • Silhouette Score   │
+│   • Mean-Shift                 • MDS                       • Davies-Bouldin     │
+│   • Spectral                   • Isomap                    • Calinski-Harabasz  │
+│   • OPTICS                     • LLE                       • Elbow Automation   │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -332,8 +472,19 @@ Customer-Segmentation-Studio/
 
 ---
 
-**Built with 📊 data science, 🤖 machine learning, and ☕ dedication**
+**Built with 🧪 experimentation, 📊 data science, and 🎯 purpose**
 
-*Customer Segmentation Studio v2.0 — Know Your Customers. Target With Precision.*
+*Unsupervised Learning Workbench — See the Unseen Patterns in Your Data*
+
+---
+
+```
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                                                                               ║
+║   "The goal is to turn data into information, and information into insight." ║
+║                                                        — Carly Fiorina        ║
+║                                                                               ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+```
 
 </div>
