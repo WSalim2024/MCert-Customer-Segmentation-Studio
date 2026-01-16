@@ -1,134 +1,178 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 
 # --- PAGE CONFIG ---
-st.set_page_config(page_title="Customer Segmentation Studio", page_icon="🛍️", layout="wide")
+st.set_page_config(page_title="Unsupervised Learning Workbench", page_icon="🧪", layout="wide")
 
-st.title("🛍️ Customer Segmentation Studio")
-st.markdown("""
-> **Goal:** Group customers based on their **Annual Income** and **Spending Score**.
-> **Algorithms:**
-> * **K-Means:** Best for specific number of round clusters.
-> * **DBSCAN:** Best for finding outliers and arbitrary shapes.
-""")
+st.title("🧪 Unsupervised Learning Workbench v4.0")
 
 
-# --- STEP 1: DATA LOADING ---
+# --- STEP 1: DATA LOADING (3D Data) ---
 @st.cache_data
 def load_data():
-    # Using the dataset from the activity
     data = {
-        # FIX: range(1, 25) creates 24 IDs to match the 24 data points below
-        'CustomerID': range(1, 25),
-        'AnnualIncome': [15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5,
-                         20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5,
-                         35, 80, 85, 90],
-        'SpendingScore': [39, 81, 6, 77, 40, 76, 6, 94, 3, 72,
-                          14, 99, 15, 79, 10, 87, 4, 92, 5, 88,
-                          35, 80, 85, 90]
+        'CustomerID': range(1, 46),
+        'AnnualIncome': [
+            15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5,
+            20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5,
+            25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5,
+            30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5,
+            35, 80, 85, 90, 95
+        ],
+        'SpendingScore': [
+            39, 81, 6, 77, 40, 76, 6, 94, 3, 72,
+            14, 99, 15, 79, 10, 87, 4, 92, 5, 88,
+            39, 81, 6, 77, 40, 76, 6, 94, 3, 72,
+            14, 99, 15, 79, 10, 87, 4, 92, 5, 88,
+            35, 80, 85, 90, 92
+        ],
+        'Age': [
+            19, 21, 20, 23, 31, 22, 35, 23, 64, 30,
+            67, 35, 58, 24, 37, 22, 35, 20, 52, 35,
+            25, 20, 29, 31, 40, 28, 33, 41, 55, 30,
+            67, 35, 58, 24, 37, 22, 35, 20, 52, 35,
+            30, 45, 48, 50, 52
+        ]
     }
     return pd.DataFrame(data)
 
 
 df = load_data()
 
-# --- STEP 2: SIDEBAR CONFIGURATION ---
-st.sidebar.header("⚙️ Configuration")
-model_type = st.sidebar.radio("Select Algorithm", ["K-Means", "DBSCAN"])
-show_raw = st.sidebar.checkbox("Show Raw Data", value=False)
-
-# --- STEP 3: PREPROCESSING ---
-features = df[['AnnualIncome', 'SpendingScore']]
+# --- PREPROCESSING ---
+features = df[['AnnualIncome', 'SpendingScore', 'Age']]
 scaler = StandardScaler()
 features_scaled = scaler.fit_transform(features)
 
-# --- MODEL LOGIC ---
-if model_type == "K-Means":
-    # === K-MEANS LOGIC ===
-    k_clusters = st.sidebar.slider("Number of Clusters (k)", min_value=2, max_value=6, value=3)
+# --- NAVIGATION ---
+st.sidebar.header("🛠️ Tool Selector")
+app_mode = st.sidebar.selectbox("Choose Activity",
+                                ["1. Cluster Analysis (K-Means/DBSCAN)", "2. Dimensionality Reduction (PCA/t-SNE)"])
 
-    # Elbow Method
-    st.subheader("1. Determine Optimal Clusters (Elbow Method)")
-    c1, c2 = st.columns([2, 1])
-    with c1:
-        wcss = []
-        for i in range(1, 11):
-            kmeans = KMeans(n_clusters=i, init='k-means++', random_state=42)
-            kmeans.fit(features_scaled)
-            wcss.append(kmeans.inertia_)
-        fig_elbow, ax = plt.subplots(figsize=(8, 3))
-        ax.plot(range(1, 11), wcss, marker='o', linestyle='--', color='teal')
-        ax.set_xlabel('k')
-        ax.set_ylabel('WCSS')
-        st.pyplot(fig_elbow)
 
-    # Fit Model
-    model = KMeans(n_clusters=k_clusters, init='k-means++', random_state=42)
-    df['Cluster'] = model.fit_predict(features_scaled)
+# --- HELPER: COLOR PALETTE ---
+def get_colors(n):
+    # Standard bright colors for clusters
+    base = ['#e6194b', '#3cb44b', '#ffe119', '#4363d8', '#f58231', '#911eb4', '#46f0f0', '#f032e6']
+    return base[:n] if n <= len(base) else base
 
-else:
-    # === DBSCAN LOGIC ===
-    st.sidebar.markdown("---")
-    eps_val = st.sidebar.slider("Epsilon (Radius)", 0.1, 2.0, 0.5, 0.1)
-    min_samples_val = st.sidebar.slider("Min Samples", 2, 10, 3)
 
-    st.subheader("1. Parameter Tuning")
-    st.info(f"""
-    **Epsilon ({eps_val}):** Max distance between two points to be neighbors.
-    **Min Samples ({min_samples_val}):** Min neighbors needed to form a 'Core' cluster.
-    """)
+# ==========================================
+# MODE 1: CLUSTERING
+# ==========================================
+if app_mode == "1. Cluster Analysis (K-Means/DBSCAN)":
+    st.subheader("🔍 Cluster Analysis")
+    st.markdown("Group data points based on **Income, Spending Score, AND Age**.")
 
-    # Fit Model
-    model = DBSCAN(eps=eps_val, min_samples=min_samples_val)
-    df['Cluster'] = model.fit_predict(features_scaled)
+    algo_type = st.sidebar.radio("Select Algorithm", ["K-Means", "DBSCAN"])
 
-# --- VISUALIZATION ---
-st.subheader(f"2. {model_type} Cluster Visualization")
-c_viz, c_stats = st.columns([2, 1])
+    # Run Algorithm
+    if algo_type == "K-Means":
+        k = st.sidebar.slider("Number of Clusters (k)", 2, 6, 3)
+        model = KMeans(n_clusters=k, init='k-means++', random_state=42)
+        df['Cluster'] = model.fit_predict(features_scaled)
+    else:
+        eps = st.sidebar.slider("Epsilon", 0.1, 2.0, 0.5, 0.1)
+        min_samples = st.sidebar.slider("Min Samples", 2, 10, 3)
+        model = DBSCAN(eps=eps, min_samples=min_samples)
+        df['Cluster'] = model.fit_predict(features_scaled)
 
-with c_viz:
+    # Plotting (2D Slice)
     fig, ax = plt.subplots(figsize=(10, 6))
-
-    # Handle Outliers for DBSCAN (Cluster -1)
     unique_clusters = sorted(df['Cluster'].unique())
-    colors = sns.color_palette("bright", len(unique_clusters))
+    colors = get_colors(len(unique_clusters))
 
     for i, cluster in enumerate(unique_clusters):
         cluster_data = df[df['Cluster'] == cluster]
-
-        # Color logic: Black for noise (-1), other colors for clusters
-        color = 'black' if cluster == -1 else colors[i]
-        label = 'Noise (Outliers)' if cluster == -1 else f'Cluster {cluster}'
+        c = 'black' if cluster == -1 else colors[i % len(colors)]
+        label = 'Noise' if cluster == -1 else f'Cluster {cluster}'
         marker = 'x' if cluster == -1 else 'o'
 
-        ax.scatter(
-            cluster_data['AnnualIncome'],
-            cluster_data['SpendingScore'],
-            s=100,
-            c=[color],
-            label=label,
-            marker=marker,
-            edgecolors='white'
-        )
+        ax.scatter(cluster_data['AnnualIncome'], cluster_data['SpendingScore'], c=[c], s=100, label=label,
+                   marker=marker, edgecolors='white')
 
-    ax.set_title(f'Customer Segments ({model_type})')
-    ax.set_xlabel('Annual Income')
-    ax.set_ylabel('Spending Score')
+    ax.set_xlabel("Annual Income")
+    ax.set_ylabel("Spending Score")
+    ax.set_title(f"{algo_type} Results (Income vs Score)")
     ax.legend()
     st.pyplot(fig)
 
-with c_stats:
-    st.write("### Cluster Statistics")
-    # Count sizes
-    counts = df['Cluster'].value_counts().sort_index()
-    st.dataframe(counts.rename("Count"))
+# ==========================================
+# MODE 2: DIMENSIONALITY REDUCTION
+# ==========================================
+else:
+    st.subheader("📉 Dimensionality Reduction")
+    st.markdown("Flatten 3D data (Income, Score, Age) into 2D to visualize global structure.")
 
-    if -1 in df['Cluster'].values:
-        st.warning(f"⚠️ Detected {len(df[df['Cluster'] == -1])} Noise Points (Outliers)!")
+    # 1. Choose Reduction Method
+    dim_algo = st.sidebar.radio("Method", ["PCA", "t-SNE"])
 
-    if show_raw:
-        st.dataframe(df)
+    # 2. Choose Color Overlay (The New Feature!)
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("**🎨 Visualization Overlay**")
+    color_by = st.sidebar.selectbox("Color Points By:", ["No Color", "K-Means Clusters", "DBSCAN Clusters"])
+
+    # Calculate Colors based on selection
+    if color_by == "K-Means Clusters":
+        k = st.sidebar.slider("K (for Coloring)", 2, 6, 3)
+        model = KMeans(n_clusters=k, random_state=42)
+        labels = model.fit_predict(features_scaled)
+        title_suffix = f" (Colored by K-Means, k={k})"
+    elif color_by == "DBSCAN Clusters":
+        model = DBSCAN(eps=0.5, min_samples=3)
+        labels = model.fit_predict(features_scaled)
+        title_suffix = " (Colored by DBSCAN)"
+    else:
+        labels = [0] * len(df)  # Dummy labels
+        title_suffix = ""
+
+    # Run Dimensionality Reduction
+    if dim_algo == "PCA":
+        reducer = PCA(n_components=2)
+        coords = reducer.fit_transform(features_scaled)
+        x_col, y_col = 'PCA1', 'PCA2'
+    else:
+        perplexity = st.sidebar.slider("Perplexity", 2, 10, 3)
+        reducer = TSNE(n_components=2, perplexity=perplexity, random_state=42)
+        coords = reducer.fit_transform(features_scaled)
+        x_col, y_col = 't-SNE1', 't-SNE2'
+
+    # Create Plot DataFrame
+    df_viz = pd.DataFrame(coords, columns=[x_col, y_col])
+    df_viz['Label'] = labels
+
+    # Plotting
+    fig, ax = plt.subplots(figsize=(10, 6))
+    unique_labels = sorted(df_viz['Label'].unique())
+    colors = get_colors(len(unique_labels))
+
+    for i, lbl in enumerate(unique_labels):
+        cluster_data = df_viz[df_viz['Label'] == lbl]
+        if color_by == "No Color":
+            c = 'teal'
+            label = None
+        else:
+            c = 'black' if lbl == -1 else colors[i % len(colors)]
+            label = 'Noise' if lbl == -1 else f'Cluster {lbl}'
+
+        marker = 'x' if lbl == -1 else 'o'
+        ax.scatter(cluster_data[x_col], cluster_data[y_col], c=[c], s=100, label=label, marker=marker,
+                   edgecolors='black', alpha=0.8)
+
+    ax.set_xlabel(x_col)
+    ax.set_ylabel(y_col)
+    ax.set_title(f"{dim_algo} Visualization{title_suffix}")
+    if color_by != "No Color": ax.legend()
+    ax.grid(True, alpha=0.3)
+
+    col1, col2 = st.columns([3, 1])
+    col1.pyplot(fig)
+    col2.info("""
+    **Interpretation:**
+    If you see distinct colored groups here, it means the clusters found in 3D space are well-separated even when flattened to 2D.
+    """)
