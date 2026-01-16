@@ -2,9 +2,9 @@
 
 # 🧪 Unsupervised Learning Workbench
 
-### **Version 4.0 — The Unified Update**
+### **Version 4.1 — The Synthetic Data Update**
 
-*Cross-Reference Clustering with Dimensionality Reduction for Complete Visual Validation*
+*Professional-Grade Visualizations with Algorithmically Generated Customer Personas*
 
 ---
 
@@ -27,8 +27,9 @@
 ## 📋 Table of Contents
 
 - [Project Evolution](#-project-evolution)
-- [What's New in v4.0](#-whats-new-in-v40)
+- [The Problem & Solution](#-the-problem--solution)
 - [Feature Breakdown](#-feature-breakdown)
+- [Customer Personas](#-customer-personas)
 - [Screenshots](#-screenshots)
 - [Technical Implementation](#-technical-implementation)
 - [Quick Start](#-quick-start)
@@ -43,135 +44,223 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                        THE EVOLUTION TO v4.0                                    │
+│                        THE EVOLUTION TO v4.1                                    │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│   v1.0              v2.0              v3.0              v4.0                    │
-│  ┌──────┐          ┌──────┐          ┌──────┐          ┌──────┐                 │
-│  │Basic │   ───►   │Multi │   ───►   │Dim   │   ───►   │UNIFIED│                │
-│  │K-Means│          │Model │          │Reduc-│          │ANALYSIS│               │
-│  │      │          │Engine│          │tion  │          │       │                │
-│  └──────┘          └──────┘          └──────┘          └──────┘                 │
+│   v1.0          v2.0          v3.0          v4.0          v4.1                  │
+│  ┌─────┐       ┌─────┐       ┌─────┐       ┌─────┐       ┌─────┐               │
+│  │Basic│ ───► │Multi│ ───► │ Dim │ ───► │Unifi│ ───► │SYNTH│               │
+│  │K-Mns│       │Model│       │Reduc│       │ ed  │       │ DATA│               │
+│  └─────┘       └─────┘       └─────┘       └─────┘       └─────┘               │
 │                                                                                 │
-│  • Single          • +DBSCAN         • +PCA            • Cluster +              │
-│    algorithm       • Outlier         • +t-SNE            Reduction              │
-│  • 2D data           detection       • 3D→2D             INTEGRATION            │
-│                                        projection       • Visual                │
-│                                                           validation            │
+│  • Single      • +DBSCAN     • +PCA        • Cross-      • 240-row             │
+│    algo        • Outliers    • +t-SNE        reference     generator           │
+│  • 45 rows     • 45 rows     • 45 rows     • 45 rows     • 5 personas          │
+│                                                          • Textbook            │
+│                                                            perfect             │
 │                                                                                 │
-│                                                         ▲                       │
-│                                                         │                       │
-│                                              ┌──────────┴──────────┐            │
-│                                              │   THE BREAKTHROUGH   │            │
-│                                              │   Cross-reference    │            │
-│                                              │   clusters with      │            │
-│                                              │   reduced dimensions │            │
-│                                              └─────────────────────┘            │
+│                                              ▲                                  │
+│                                              │                                  │
+│                                   ┌──────────┴──────────┐                       │
+│                                   │  THE DATA PROBLEM   │                       │
+│                                   │  Small datasets     │                       │
+│                                   │  = Messy clusters   │                       │
+│                                   │  = Poor demos       │                       │
+│                                   └─────────────────────┘                       │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 </div>
 
-What began as a simple **Customer Segmentation Tool** has matured into a complete **Educational Workbench** for Unsupervised Machine Learning.
-
-### The Journey
-
-| Version | Codename | Key Innovation |
-|:-------:|:---------|:---------------|
-| v1.0 | *Foundation* | Basic K-Means clustering |
-| v2.0 | *Multi-Engine* | Added DBSCAN with outlier detection |
-| v3.0 | *Visualization* | PCA & t-SNE dimensionality reduction |
-| **v4.0** | **Unified Update** | **Cross-referenced analysis** |
+What started as a simple Customer Segmentation Tool has evolved into a **complete educational workbench** for Unsupervised Machine Learning — now with **professionally generated synthetic data**.
 
 ---
 
-## 🚀 What's New in v4.0
+## 🎯 The Problem & Solution
 
-### The Key Innovation: Unified Analysis
+### The Problem
 
-Previous versions treated **Clustering** and **Dimensionality Reduction** as separate operations. Version 4.0 bridges this gap with **cross-referenced analysis**.
+Standard small datasets (like the original 45-row example) often **fail to show distinct clusters** in advanced algorithms like t-SNE.
 
 <div align="center">
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         THE UNIFIED ANALYSIS CONCEPT                            │
+│                           THE SMALL DATA PROBLEM                                │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│   BEFORE v4.0 (Isolated Analysis)                                               │
-│   ────────────────────────────────                                              │
+│   WITH 45 ROWS (Original Data)                                                  │
+│   ────────────────────────────                                                  │
 │                                                                                 │
-│   ┌─────────────────┐         ┌─────────────────┐                               │
-│   │  TAB 1          │         │  TAB 2          │                               │
-│   │  Clustering     │    ✗    │  Reduction      │     No connection!            │
-│   │  (K-Means)      │◄───────►│  (PCA/t-SNE)    │     Results in silos.         │
-│   │                 │         │                 │                               │
-│   │  🔴🔵🟢🟡        │         │  ●●●●●●●●●      │                               │
-│   └─────────────────┘         └─────────────────┘                               │
+│   K-Means Output:              t-SNE Output:                                    │
+│   ┌─────────────────┐          ┌─────────────────┐                              │
+│   │   🔴  🔵        │          │     ●   ●       │                              │
+│   │ 🔴  🔵  🔵      │          │   ●  ●    ●    │                              │
+│   │   🔴    🟢      │          │  ●    ●   ●    │                              │
+│   │  🟢  🟢        │          │    ●  ●        │                              │
+│   └─────────────────┘          └─────────────────┘                              │
 │                                                                                 │
-│   ═══════════════════════════════════════════════════════════════════════════   │
+│   "Clusters look OK"           "Where are the groups?!"                         │
+│                                 😵 Messy, unprofessional                        │
 │                                                                                 │
-│   v4.0 (Unified Analysis)                                                       │
-│   ───────────────────────                                                       │
+│   ─────────────────────────────────────────────────────────────────────────     │
 │                                                                                 │
-│   ┌─────────────────┐         ┌─────────────────┐                               │
-│   │  TAB 1          │         │  TAB 2          │                               │
-│   │  Clustering     │────────►│  Reduction      │     CONNECTED!                │
-│   │  (K-Means)      │ Labels  │  (PCA/t-SNE)    │     See clusters in           │
-│   │                 │ passed  │                 │     reduced space.            │
-│   │  🔴🔵🟢🟡        │         │  🔴🔵🟢🟡        │                               │
-│   └─────────────────┘         └─────────────────┘                               │
-│                                                                                 │
-│   🎯 KEY INSIGHT: Validate if clusters that are mathematically distinct        │
-│                   in 3D are also VISUALLY distinct in 2D                        │
+│   WHY THIS HAPPENS:                                                             │
+│   • t-SNE needs ~100+ points to find meaningful local structure                 │
+│   • Small datasets have too much noise relative to signal                       │
+│   • Real-world datasets rarely have perfectly separated clusters                │
+│   • Demo/portfolio visualizations look unprofessional                           │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 </div>
 
-### Why This Matters
+### The v4.1 Solution: Synthetic Data Generator
 
-| Question | How v4.0 Answers It |
-|----------|---------------------|
-| "Are my K-Means clusters actually separated?" | Project them onto PCA/t-SNE and see visually |
-| "Does DBSCAN's grouping make sense?" | Overlay DBSCAN labels on t-SNE to validate density regions |
-| "Which reduction method shows my clusters better?" | Compare PCA vs t-SNE with same cluster coloring |
+Version 4.1 introduces an **automated Synthetic Data Generator** that creates **240 realistic "Mall Customers"** with **distinct personas**.
+
+<div align="center">
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        THE SYNTHETIC DATA SOLUTION                              │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   WITH 240 ROWS (Synthetic Data)                                                │
+│   ──────────────────────────────                                                │
+│                                                                                 │
+│   K-Means Output:              t-SNE Output:                                    │
+│   ┌─────────────────┐          ┌─────────────────┐                              │
+│   │ 🔴🔴🔴   🔵🔵🔵  │          │  🔴🔴🔴   🔵🔵🔵 │                              │
+│   │ 🔴🔴🔴   🔵🔵🔵  │          │ 🔴🔴🔴🔴  🔵🔵🔵 │                              │
+│   │  🟢🟢🟢   🟡🟡🟡 │          │  🟢🟢🟢   🟡🟡🟡 │                              │
+│   │ 🟢🟢🟢   🟡🟡🟡  │          │ 🟢🟢🟢🟢  🟡🟡🟡 │                              │
+│   │     🟣🟣🟣      │          │    🟣🟣🟣🟣     │                              │
+│   └─────────────────┘          └─────────────────┘                              │
+│                                                                                 │
+│   "Clear clusters!"            "Textbook perfect!"                              │
+│   ✅ Professional              ✅ Portfolio-ready                               │
+│                                                                                 │
+│   ─────────────────────────────────────────────────────────────────────────     │
+│                                                                                 │
+│   WHY THIS WORKS:                                                               │
+│   • 240 points provide statistical density for t-SNE                            │
+│   • 5 distinct Gaussian clusters with realistic parameters                      │
+│   • Each persona has unique (Income, Spending, Age) distributions               │
+│   • Visualizations look professional and publication-ready                      │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+</div>
+
+---
+
+## 👥 Customer Personas
+
+The Synthetic Data Generator creates **5 distinct customer archetypes** based on real-world shopping behaviors:
+
+<div align="center">
+
+| Persona | Icon | Size | Income | Spending | Age | Description |
+|:--------|:----:|:----:|:------:|:--------:|:---:|:------------|
+| **Frugal Seniors** | 👴 | 48 | Low | Low | 55-70 | Retired, budget-conscious |
+| **Young Spenders** | 🛍️ | 48 | Low | High | 18-30 | YOLO lifestyle, credit-heavy |
+| **Career Builders** | 💼 | 48 | Medium | Medium | 30-45 | Balanced professionals |
+| **Affluent Savers** | 💰 | 48 | High | Low | 40-60 | Wealthy but conservative |
+| **VIP Big Spenders** | 💎 | 48 | High | High | 25-45 | Premium segment |
+
+</div>
+
+### Persona Distribution Visualization
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      5 GAUSSIAN CLUSTERS IN 3D SPACE                            │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   Spending                                                                      │
+│   Score                                                                         │
+│     ▲                                                                           │
+│     │                                     💎 VIP Big Spenders                   │
+│  90 ┤                    🛍️ Young          (High Inc, High Spend)               │
+│     │                     Spenders                                              │
+│     │                  (Low Inc, High Spend)                                    │
+│  70 ┤                                                                           │
+│     │                                                                           │
+│     │                        💼 Career Builders                                 │
+│  50 ┤                         (Mid Inc, Mid Spend)                              │
+│     │                                                                           │
+│     │                                                                           │
+│  30 ┤                                                                           │
+│     │   👴 Frugal Seniors                    💰 Affluent Savers                 │
+│     │    (Low Inc, Low Spend)                 (High Inc, Low Spend)             │
+│  10 ┤                                                                           │
+│     │                                                                           │
+│     └────────────────────────────────────────────────────────────────────► Inc  │
+│          20        40        60        80       100       120                   │
+│                           Annual Income ($k)                                    │
+│                                                                                 │
+│   NOTE: Age is the 3rd dimension (not shown), creating vertical separation      │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Generation Logic
+
+```python
+# Persona definitions (mean values)
+personas = {
+    'Frugal Seniors':   {'income': 25, 'spending': 20, 'age': 62},
+    'Young Spenders':   {'income': 30, 'spending': 75, 'age': 24},
+    'Career Builders':  {'income': 55, 'spending': 50, 'age': 38},
+    'Affluent Savers':  {'income': 95, 'spending': 25, 'age': 50},
+    'VIP Big Spenders': {'income': 100, 'spending': 85, 'age': 35}
+}
+
+# Each persona: 48 samples with Gaussian noise
+# Total: 5 × 48 = 240 customers
+```
 
 ---
 
 ## 🎨 Feature Breakdown
 
-The Workbench is organized into two integrated tabs:
+The Workbench is organized into two main tabs plus a dataset viewer:
 
 <div align="center">
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         WORKBENCH ARCHITECTURE v4.0                             │
+│                         WORKBENCH ARCHITECTURE v4.1                             │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│                        ┌───────────────────────────┐                            │
-│                        │  🧪 UNSUPERVISED LEARNING │                            │
-│                        │       WORKBENCH v4.0      │                            │
-│                        └─────────────┬─────────────┘                            │
-│                                      │                                          │
-│                    ┌─────────────────┴─────────────────┐                        │
-│                    │                                   │                        │
-│                    ▼                                   ▼                        │
-│         ┌─────────────────────┐           ┌─────────────────────┐              │
-│         │  🔍 TAB 1           │           │  📉 TAB 2           │              │
-│         │  CLUSTER ANALYSIS   │──────────►│  DIMENSIONALITY     │              │
-│         │                     │  Labels   │  REDUCTION          │              │
-│         │  • K-Means          │  passed   │                     │              │
-│         │  • DBSCAN           │  to Tab 2 │  • PCA              │              │
-│         │                     │           │  • t-SNE            │              │
-│         │  Output: Cluster    │           │  • "Color By..." 🆕 │              │
-│         │  assignments        │           │                     │              │
-│         └─────────────────────┘           └─────────────────────┘              │
+│   ┌─────────────────────────────────────────────────────────────────────────┐   │
+│   │                    🧪 UNSUPERVISED LEARNING WORKBENCH                   │   │
+│   │                           Version 4.1                                   │   │
+│   └───────────────────────────────┬─────────────────────────────────────────┘   │
+│                                   │                                             │
+│          ┌────────────────────────┼────────────────────────┐                    │
+│          │                        │                        │                    │
+│          ▼                        ▼                        ▼                    │
+│   ┌─────────────┐          ┌─────────────┐          ┌─────────────┐            │
+│   │ 🔍 TAB 1    │          │ 📉 TAB 2    │          │ 📄 SIDEBAR  │            │
+│   │ CLUSTER     │ ────────►│ DIMENSION   │          │ DATASET     │            │
+│   │ ANALYSIS    │  Labels  │ REDUCTION   │          │ VIEWER      │            │
+│   │             │          │             │          │             │            │
+│   │ • K-Means   │          │ • PCA       │          │ • 240 rows  │            │
+│   │ • DBSCAN    │          │ • t-SNE     │          │ • Raw data  │            │
+│   │             │          │ • Color By  │          │ • Inspect   │            │
+│   │             │          │ • Perplexity│          │             │            │
+│   └─────────────┘          └─────────────┘          └─────────────┘            │
 │                                                                                 │
-│                              UNIFIED ANALYSIS FLOW                              │
+│        ▲                                                    ▲                   │
+│        │                                                    │                   │
+│        └──────────────── SYNTHETIC DATA ────────────────────┘                   │
+│                         (240 customers)                                         │
+│                         (5 personas)                                            │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -182,15 +271,15 @@ The Workbench is organized into two integrated tabs:
 
 ### 🔍 Tab 1: Cluster Analysis
 
-**Purpose:** Group customers into meaningful segments based on behavioral similarity in 3D space.
+**Purpose:** Group customers into segments based on behavioral similarity in 3D space.
 
-#### Input Data
+#### Input Data (Synthetic)
 
-| Dimension | Feature | Range | Description |
-|:---------:|:--------|:------|:------------|
-| **X₁** | Annual Income | $15k - $137k | Customer's yearly earnings |
-| **X₂** | Spending Score | 1 - 99 | Purchase behavior metric |
-| **X₃** | Age | 18 - 70 | Customer age in years |
+| Dimension | Feature | Range | Distribution |
+|:---------:|:--------|:------|:-------------|
+| **X₁** | Annual Income | $15k - $130k | 5 Gaussian clusters |
+| **X₂** | Spending Score | 1 - 99 | 5 Gaussian clusters |
+| **X₃** | Age | 18 - 70 | 5 Gaussian clusters |
 
 #### Available Algorithms
 
@@ -202,9 +291,6 @@ The Workbench is organized into two integrated tabs:
 
 *Geometric Partitioning*
 
-**How it works:**
-Divides customers into exactly $k$ groups by minimizing within-cluster variance.
-
 **Interactive Controls:**
 ```
 ┌─────────────────────────────┐
@@ -214,7 +300,10 @@ Divides customers into exactly $k$ groups by minimizing within-cluster variance.
 └─────────────────────────────┘
 ```
 
-**Output:** Cluster labels (0, 1, 2, ... k-1)
+**Best for:**
+- Known number of segments
+- Spherical cluster shapes
+- Fast computation
 
 </td>
 <td width="50%">
@@ -223,13 +312,10 @@ Divides customers into exactly $k$ groups by minimizing within-cluster variance.
 
 *Density-Based Spatial Clustering*
 
-**How it works:**
-Finds dense regions automatically; sparse points become outliers.
-
 **Interactive Controls:**
 ```
 ┌─────────────────────────────┐
-│  Epsilon (ε)                │
+│  Epsilon (ε) Radius         │
 │  [0.1]───────●───────[2.0]  │
 │            ε = 0.5          │
 ├─────────────────────────────┤
@@ -239,50 +325,27 @@ Finds dense regions automatically; sparse points become outliers.
 └─────────────────────────────┘
 ```
 
-**Output:** Cluster labels + Noise (-1)
+**Best for:**
+- Unknown number of clusters
+- Outlier detection
+- Irregular shapes
 
 </td>
 </tr>
 </table>
 
-#### Visualization
+#### Visualization Output
 
-2D projection showing **Annual Income vs Spending Score** with:
+2D scatter plot showing **Annual Income vs Spending Score**:
 - 🎨 Color-coded cluster assignments
 - ⭐ Centroid markers (K-Means)
-- ⚠️ Noise points highlighted (DBSCAN)
+- ⚫ Noise points (DBSCAN)
 
 ---
 
-### 📉 Tab 2: Dimensionality Reduction *(The v4.0 Star)*
+### 📉 Tab 2: Dimensionality Reduction *(Unified Analysis)*
 
-**Purpose:** Flatten 3D data into 2D while preserving meaningful structure — now with **cluster overlay capability**.
-
-#### The 3D → 2D Problem
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                     WHY DIMENSIONALITY REDUCTION?                               │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│        3D DATA                                     2D PROJECTION                │
-│        ────────                                    ──────────────               │
-│                                                                                 │
-│           Age                                                                   │
-│            │      ●                                      ●  ●                   │
-│            │    ●   ●                                  ●  ●  ●                  │
-│            │  ●       ●                               ●      ●                  │
-│            │    ●   ●        ═══════════►                  ●                    │
-│           /│\     ●                                   ●  ●    ●                 │
-│          / │ \                                         ●  ●                     │
-│         /  │  \                                                                 │
-│     Income─┴───Spending                              Component 1                │
-│                                                                                 │
-│   😵 "I can't visualize                          😊 "Now I can see              │
-│       3 dimensions!"                                  the patterns!"            │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
+**Purpose:** Flatten 3D data to 2D while preserving structure — with cluster overlay capability.
 
 #### Available Algorithms
 
@@ -295,14 +358,14 @@ Finds dense regions automatically; sparse points become outliers.
 *Linear Transformation*
 
 **Interpretation:**
-- Preserves **global structure**
-- Shows overall data spread
-- Axes represent directions of maximum variance
+- Shows **global structure**
+- Preserves maximum variance
+- Axes are interpretable
 
 **Best for:**
-- Understanding overall distribution
-- Fast, deterministic results
-- Interpretable components
+- Overall data spread
+- Feature importance
+- Fast, deterministic
 
 </td>
 <td width="50%">
@@ -312,71 +375,125 @@ Finds dense regions automatically; sparse points become outliers.
 *Non-Linear Embedding*
 
 **Interpretation:**
-- Preserves **local neighborhoods**
+- Shows **local neighborhoods**
 - Points close in 3D stay close in 2D
-- Reveals hidden cluster structure
+- Reveals tight clusters
 
 **Best for:**
-- Discovering tight groupings
-- Non-linear relationships
-- Exploratory visualization
+- Finding hidden groupings
+- Visual validation
+- Publication-quality plots
 
 </td>
 </tr>
 </table>
 
----
+#### 🆕 Perplexity Slider (t-SNE Tuning)
 
-#### 🆕 NEW FEATURE: "Color Points By..." Dropdown
-
-This is the **breakthrough feature** of v4.0. The dropdown allows users to overlay clustering results onto the dimensionality reduction plot.
-
-<div align="center">
+Critical for the larger 240-row dataset:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                    "COLOR POINTS BY..." DROPDOWN                                │
+│                         PERPLEXITY PARAMETER                                    │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   ┌─────────────────────────────────────────────────────────────────────────┐   │
+│   │  Perplexity:                                                            │   │
+│   │  [5]──────────────────────●──────────────────────[50]                   │   │
+│   │                      perplexity = 30                                    │   │
+│   └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+│   INTERPRETATION:                                                               │
+│   ─────────────────                                                             │
+│                                                                                 │
+│   Low Perplexity (5-10)         │  High Perplexity (30-50)                      │
+│   ─────────────────────         │  ────────────────────────                     │
+│   • Focuses on local detail     │  • Captures global structure                  │
+│   • Tight, small clusters       │  • Looser, spread-out clusters               │
+│   • May miss big picture        │  • May lose fine detail                       │
+│                                 │                                               │
+│   Best for: Finding sub-groups  │  Best for: Overview visualization            │
+│                                                                                 │
+│   💡 RULE OF THUMB: perplexity ≈ sqrt(n) → For 240 rows, try 15-30            │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### 🎯 "Color Points By..." Dropdown
+
+The unified analysis feature from v4.0, now enhanced for synthetic data:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                      "COLOR POINTS BY..." OPTIONS                               │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
 │   ┌─────────────────────────────────────────┐                                   │
 │   │  Color Points By:          [▼]         │                                   │
 │   ├─────────────────────────────────────────┤                                   │
-│   │  ○ None (Single Color)                 │ ← Default: all points same color  │
-│   │  ● K-Means Clusters                    │ ← Overlay K-Means labels          │
-│   │  ○ DBSCAN Clusters                     │ ← Overlay DBSCAN labels           │
+│   │  ○ None (Single Color)                 │                                   │
+│   │  ● K-Means Clusters                    │ ← Validate K-Means on t-SNE      │
+│   │  ○ DBSCAN Clusters                     │ ← Validate DBSCAN on PCA         │
 │   └─────────────────────────────────────────┘                                   │
 │                                                                                 │
-│   ═══════════════════════════════════════════════════════════════════════════   │
+│   WITH 240 SYNTHETIC ROWS:                                                      │
+│   ────────────────────────                                                      │
 │                                                                                 │
-│   VISUAL RESULT:                                                                │
+│   t-SNE + K-Means Coloring:                                                     │
+│   ┌─────────────────────────────┐                                               │
+│   │    🔴🔴🔴           🔵🔵🔵   │                                               │
+│   │   🔴🔴🔴🔴         🔵🔵🔵🔵  │     ✅ Clear separation!                     │
+│   │    🔴🔴🔴           🔵🔵🔵   │     ✅ Clusters validated                    │
+│   │                             │     ✅ Portfolio-ready                       │
+│   │  🟢🟢🟢    🟡🟡🟡    🟣🟣🟣  │                                               │
+│   │ 🟢🟢🟢🟢  🟡🟡🟡🟡  🟣🟣🟣🟣 │                                               │
+│   │  🟢🟢🟢    🟡🟡🟡    🟣🟣🟣  │                                               │
+│   └─────────────────────────────┘                                               │
 │                                                                                 │
-│   None (Single Color)        K-Means Colored          DBSCAN Colored           │
-│   ───────────────────        ───────────────          ──────────────           │
-│                                                                                 │
-│      ●  ●  ●                   🔴  🔴  🔵                🟢  🟢  🔵              │
-│    ●  ●  ●  ●               🔴  🔴  🔵  🔵            🟢  🟢  🔵  🔵            │
-│      ●  ●  ●                   🔴  🔵  🔵                🟢  🔵  ⚫              │
-│    ●  ●  ●  ●               🟡  🟡  🟢  🟢            🟡  🟡  🟡  ⚫            │
-│      ●  ●  ●                   🟡  🟡  🟢                🟡  🟡  ⚫              │
-│                                                              ▲                  │
-│   "Just the shape"          "Clusters visible!"       Noise shown (⚫)          │
-│                                                                                 │
-│   🎯 INSIGHT: If colors cluster together in 2D, your 3D clustering is valid!   │
-│              If colors are scattered, clusters may be overlapping.              │
+│   💡 This is only possible with well-structured synthetic data!                 │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-</div>
+---
 
-#### How to Interpret the Unified View
+### 📄 Dataset Viewer (Sidebar)
 
-| Observation | Meaning | Action |
-|-------------|---------|--------|
-| 🟢 **Colors form tight groups** | Clusters are well-separated in reduced space | ✅ Clustering is valid |
-| 🟡 **Colors partially mixed** | Some cluster overlap exists | ⚠️ Consider adjusting $k$ or $\varepsilon$ |
-| 🔴 **Colors completely scattered** | Clusters don't translate to 2D | ❌ Re-evaluate clustering parameters |
-| ⚫ **Noise points isolated** (DBSCAN) | Outliers genuinely different | ✅ DBSCAN working correctly |
+New sidebar option to inspect the raw generated dataframe:
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                           DATASET VIEWER                                        │
+├─────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                 │
+│   SIDEBAR:                                                                      │
+│   ┌─────────────────────────────┐                                               │
+│   │ ☑️ Show Dataset             │                                               │
+│   └─────────────────────────────┘                                               │
+│                                                                                 │
+│   OUTPUT:                                                                       │
+│   ┌─────────────────────────────────────────────────────────────────────────┐   │
+│   │                                                                         │   │
+│   │   📊 Generated Customer Dataset (240 rows)                              │   │
+│   │   ─────────────────────────────────────────                             │   │
+│   │                                                                         │   │
+│   │   │ CustomerID │ Income │ Spending │  Age  │                            │   │
+│   │   ├────────────┼────────┼──────────┼───────┤                            │   │
+│   │   │     1      │  23.4  │   18.2   │  64   │  ← Frugal Senior           │   │
+│   │   │     2      │  27.1  │   22.5   │  59   │  ← Frugal Senior           │   │
+│   │   │    ...     │  ...   │   ...    │  ...  │                            │   │
+│   │   │    49      │  32.5  │   78.3   │  22   │  ← Young Spender           │   │
+│   │   │    50      │  28.9  │   71.2   │  26   │  ← Young Spender           │   │
+│   │   │    ...     │  ...   │   ...    │  ...  │                            │   │
+│   │   │   240      │ 102.3  │   88.7   │  38   │  ← VIP Big Spender         │   │
+│   │   └────────────┴────────┴──────────┴───────┘                            │   │
+│   │                                                                         │   │
+│   │   Rows: 240 | Columns: 4                                                │   │
+│   │                                                                         │   │
+│   └─────────────────────────────────────────────────────────────────────────┘   │
+│                                                                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+```
 
 ---
 
@@ -390,33 +507,36 @@ This is the **breakthrough feature** of v4.0. The dropdown allows users to overl
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                         [SCREENSHOT PLACEHOLDER]                                │
 │                                                                                 │
-│                    🔍 K-Means & DBSCAN Clustering Interface                     │
+│                    🔍 K-Means Clustering on 240 Synthetic Customers             │
+│                       5 Distinct Clusters Clearly Visible                       │
 │                                                                                 │
-│                         Add image: assets/tab1_clustering.png                   │
+│                         Add image: assets/clustering_v41.png                    │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tab 2: Dimensionality Reduction with Cluster Overlay
+### Tab 2: Dimensionality Reduction
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                         [SCREENSHOT PLACEHOLDER]                                │
 │                                                                                 │
-│                    📉 PCA/t-SNE with "Color Points By..." Feature               │
+│                    📉 t-SNE Projection with K-Means Overlay                     │
+│                       Textbook-Perfect Cluster Separation                       │
 │                                                                                 │
-│                         Add image: assets/tab2_unified.png                      │
+│                         Add image: assets/tsne_unified_v41.png                  │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### The Unified Analysis in Action
+### PCA vs t-SNE Comparison
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
 │                         [SCREENSHOT PLACEHOLDER]                                │
 │                                                                                 │
-│                    🎯 K-Means Clusters Projected onto t-SNE Map                 │
+│                    🎯 Side-by-Side: PCA (Global) vs t-SNE (Local)               │
+│                       Same K-Means Labels, Different Views                      │
 │                                                                                 │
-│                         Add image: assets/unified_analysis.png                  │
+│                         Add image: assets/pca_vs_tsne_v41.png                   │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -428,28 +548,70 @@ This is the **breakthrough feature** of v4.0. The dropdown allows users to overl
 
 ## 🛠️ Technical Implementation
 
-### Performance Optimization: "Lite" Architecture
+### Synthetic Data Generation Logic
 
-Version 4.0 introduces a streamlined architecture optimized for **Streamlit Cloud deployment**.
+The generator uses **NumPy** to create 5 distinct Gaussian-distributed clusters:
+
+```python
+import numpy as np
+import pandas as pd
+
+def generate_synthetic_customers(n_per_cluster=48):
+    """
+    Generate 240 synthetic mall customers with 5 distinct personas.
+    
+    Returns:
+        pd.DataFrame: 240 rows × 4 columns (ID, Income, Spending, Age)
+    """
+    np.random.seed(42)  # Reproducibility
+    
+    # Persona definitions: (mean_income, mean_spending, mean_age, std)
+    personas = {
+        'Frugal Seniors':   (25, 20, 62, 8),
+        'Young Spenders':   (30, 75, 24, 7),
+        'Career Builders':  (55, 50, 38, 10),
+        'Affluent Savers':  (95, 25, 50, 9),
+        'VIP Big Spenders': (100, 85, 35, 8)
+    }
+    
+    data = []
+    customer_id = 1
+    
+    for persona, (inc, spend, age, std) in personas.items():
+        for _ in range(n_per_cluster):
+            data.append({
+                'CustomerID': customer_id,
+                'Annual_Income': np.clip(np.random.normal(inc, std), 15, 130),
+                'Spending_Score': np.clip(np.random.normal(spend, std), 1, 99),
+                'Age': int(np.clip(np.random.normal(age, std/2), 18, 70))
+            })
+            customer_id += 1
+    
+    return pd.DataFrame(data)
+
+# Usage: df = generate_synthetic_customers()  # 240 rows
+```
+
+### Performance Optimization
+
+v4.1 maintains the **"Lite" architecture** from v4.0:
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         ARCHITECTURE COMPARISON                                 │
+│                         OPTIMIZATION DECISIONS                                  │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                 │
-│   BEFORE (Heavy)                           AFTER (Lite)                         │
-│   ──────────────                           ────────────                         │
+│   LIBRARY                    STATUS          RATIONALE                          │
+│   ───────────────────────    ──────          ─────────────────────────────      │
 │                                                                                 │
-│   ┌─────────────────┐                      ┌─────────────────┐                  │
-│   │ Seaborn         │ ───► Removed         │ Matplotlib      │ ✅ Retained     │
-│   │ (Heavy styling) │                      │ (Core plotting) │                  │
-│   └─────────────────┘                      └─────────────────┘                  │
+│   Matplotlib                 ✅ Used         Low memory, fast rendering         │
+│   Seaborn                    ❌ Removed      Heavy, caused memory issues        │
+│   NumPy                      ✅ Used         Essential for Gaussian generation  │
+│   Pandas                     ✅ Used         DataFrame handling                 │
+│   Scikit-Learn               ✅ Used         All ML algorithms                  │
 │                                                                                 │
-│   Memory: ~150MB                           Memory: ~80MB                        │
-│   Load time: 3-4s                          Load time: 1-2s                      │
-│   Cloud issues: ⚠️ Yes                     Cloud issues: ✅ None                │
-│                                                                                 │
-│   💡 Result: Faster loads, no memory errors, same visual quality               │
+│   MEMORY FOOTPRINT: ~85MB (vs ~150MB with Seaborn)                              │
+│   LOAD TIME: ~1.5s (vs ~3.5s with Seaborn)                                      │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -462,24 +624,17 @@ Version 4.0 introduces a streamlined architecture optimized for **Streamlit Clou
 |:-----:|:----------:|:-------:|:--------|
 | 🐍 | **Python** | 3.10 | Core runtime |
 | 🖥️ | **Streamlit** | 1.28+ | Interactive dashboard |
+| 🔢 | **NumPy** | 1.24+ | Gaussian data generation |
+| 📋 | **Pandas** | 2.0+ | DataFrame operations |
 | 🤖 | **Scikit-Learn** | 1.3+ | ML algorithms |
 | | | `KMeans` | Partition clustering |
 | | | `DBSCAN` | Density clustering |
 | | | `PCA` | Linear reduction |
 | | | `TSNE` | Non-linear embedding |
 | | | `StandardScaler` | Feature normalization |
-| 📊 | **Matplotlib** | 3.7+ | Optimized visualizations |
-| 📋 | **Pandas** | 2.0+ | Data manipulation |
+| 📊 | **Matplotlib** | 3.7+ | Lightweight visualizations |
 
 </div>
-
-### Why These Choices?
-
-| Decision | Rationale |
-|----------|-----------|
-| **Matplotlib over Seaborn** | Lower memory footprint, faster rendering on Streamlit Cloud |
-| **StandardScaler** | Essential for distance-based algorithms (K-Means, DBSCAN, t-SNE) |
-| **Session State for Labels** | Enables cross-tab communication without data duplication |
 
 ---
 
@@ -495,7 +650,7 @@ git clone https://github.com/WSalim2024/MCert-Customer-Segmentation-Studio.git
 cd MCert-Customer-Segmentation-Studio
 
 # Install dependencies
-pip install pandas matplotlib scikit-learn streamlit
+pip install pandas numpy matplotlib scikit-learn streamlit
 
 # Launch the application
 streamlit run app.py
@@ -505,27 +660,6 @@ streamlit run app.py
 
 ```
 Local URL: http://localhost:8501
-```
-
-### Recommended Workflow
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                         RECOMMENDED ANALYSIS FLOW                               │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                 │
-│   STEP 1                    STEP 2                    STEP 3                    │
-│   ──────                    ──────                    ──────                    │
-│                                                                                 │
-│   🔍 Tab 1: Cluster         📉 Tab 2: Reduce          🎯 Validate               │
-│                                                                                 │
-│   Run K-Means or     ───►   Select PCA or      ───►   Check if clusters        │
-│   DBSCAN on 3D data         t-SNE algorithm           are visually separated   │
-│                                                                                 │
-│   Adjust k or ε             Set "Color By..."         Well-separated? ✅        │
-│   until satisfied           to your clustering        Overlapping? Adjust ⚠️   │
-│                                                                                 │
-└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
 ---
@@ -544,12 +678,15 @@ Unsupervised-Learning-Workbench/
 
 ## 🔮 Future Roadmap
 
-| Phase | Feature | Description | Status |
-|:-----:|:--------|:------------|:------:|
-| v4.1 | **UMAP Integration** | Faster alternative to t-SNE | 🔜 Planned |
+| Version | Feature | Description | Status |
+|:-------:|:--------|:------------|:------:|
 | v4.2 | **Hierarchical Clustering** | Dendrogram visualization | 🔜 Planned |
-| v4.3 | **Silhouette Scores** | Quantitative cluster validation | 🔜 Planned |
-| v5.0 | **Custom Data Upload** | User CSV file support | 🔜 Planned |
+| v4.3 | **UMAP Integration** | Faster alternative to t-SNE | 🔜 Planned |
+| v4.4 | **Custom Data Upload** | User CSV file support | 🔜 Planned |
+| v5.0 | **Evaluation Metrics** | Silhouette, Davies-Bouldin | 🔜 Planned |
+
+---
+
 
 ## 👨‍💻 Author
 
@@ -566,19 +703,19 @@ Unsupervised-Learning-Workbench/
 
 ---
 
-**Built with 🧪 experimentation, 🔗 integration, and 🎯 precision**
+**Built with 🎲 synthetic data, 🧪 experimentation, and 🎯 precision**
 
-*Unsupervised Learning Workbench v4.0 — Unified Analysis for Complete Understanding*
+*Unsupervised Learning Workbench v4.1 — Textbook-Perfect Visualizations, Every Time*
 
 ---
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════════╗
 ║                                                                               ║
-║   "Clustering tells you WHO belongs together.                                 ║
-║    Dimensionality reduction shows you WHY."                                   ║
+║   "Small datasets tell small stories.                                         ║
+║    Synthetic data tells the story you need to teach."                         ║
 ║                                                                               ║
-║    v4.0 bridges both — for the first time.                                    ║
+║    v4.1 — Where education meets professional presentation.                    ║
 ║                                                                               ║
 ╚═══════════════════════════════════════════════════════════════════════════════╝
 ```

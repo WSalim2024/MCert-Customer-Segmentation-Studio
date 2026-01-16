@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans, DBSCAN
 from sklearn.preprocessing import StandardScaler
@@ -9,37 +10,56 @@ from sklearn.manifold import TSNE
 # --- PAGE CONFIG ---
 st.set_page_config(page_title="Unsupervised Learning Workbench", page_icon="🧪", layout="wide")
 
-st.title("🧪 Unsupervised Learning Workbench v4.0")
+st.title("🧪 Unsupervised Learning Workbench v4.1")
 
 
-# --- STEP 1: DATA LOADING (3D Data) ---
+# --- STEP 1: DATA LOADING (Synthetic "Mall Customers" Generator) ---
 @st.cache_data
 def load_data():
-    data = {
-        'CustomerID': range(1, 46),
-        'AnnualIncome': [
-            15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5,
-            20, 20.5, 21, 21.5, 22, 22.5, 23, 23.5, 24, 24.5,
-            25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29, 29.5,
-            30, 30.5, 31, 31.5, 32, 32.5, 33, 33.5, 34, 34.5,
-            35, 80, 85, 90, 95
-        ],
-        'SpendingScore': [
-            39, 81, 6, 77, 40, 76, 6, 94, 3, 72,
-            14, 99, 15, 79, 10, 87, 4, 92, 5, 88,
-            39, 81, 6, 77, 40, 76, 6, 94, 3, 72,
-            14, 99, 15, 79, 10, 87, 4, 92, 5, 88,
-            35, 80, 85, 90, 92
-        ],
-        'Age': [
-            19, 21, 20, 23, 31, 22, 35, 23, 64, 30,
-            67, 35, 58, 24, 37, 22, 35, 20, 52, 35,
-            25, 20, 29, 31, 40, 28, 33, 41, 55, 30,
-            67, 35, 58, 24, 37, 22, 35, 20, 52, 35,
-            30, 45, 48, 50, 52
-        ]
-    }
-    return pd.DataFrame(data)
+    # Generate 240 data points to mimic the famous "Mall Customers" dataset
+    # This creates realistic clusters so t-SNE and PCA look good.
+    np.random.seed(42)
+
+    # Cluster 1: Low Income, Low Spending (The "Sensible Savers")
+    c1 = pd.DataFrame({
+        'AnnualIncome': np.random.randint(15, 30, 40),
+        'SpendingScore': np.random.randint(5, 25, 40),
+        'Age': np.random.randint(40, 60, 40)
+    })
+
+    # Cluster 2: Low Income, High Spending (The "Careless Youth")
+    c2 = pd.DataFrame({
+        'AnnualIncome': np.random.randint(15, 30, 40),
+        'SpendingScore': np.random.randint(70, 90, 40),
+        'Age': np.random.randint(18, 30, 40)
+    })
+
+    # Cluster 3: Mid Income, Mid Spending (The "Average Joes")
+    c3 = pd.DataFrame({
+        'AnnualIncome': np.random.randint(40, 70, 80),
+        'SpendingScore': np.random.randint(40, 60, 80),
+        'Age': np.random.randint(30, 50, 80)
+    })
+
+    # Cluster 4: High Income, Low Spending (The "Wealthy Savers")
+    c4 = pd.DataFrame({
+        'AnnualIncome': np.random.randint(70, 130, 40),
+        'SpendingScore': np.random.randint(5, 25, 40),
+        'Age': np.random.randint(35, 55, 40)
+    })
+
+    # Cluster 5: High Income, High Spending (The "VIPs")
+    c5 = pd.DataFrame({
+        'AnnualIncome': np.random.randint(70, 130, 40),
+        'SpendingScore': np.random.randint(75, 95, 40),
+        'Age': np.random.randint(25, 45, 40)
+    })
+
+    # Combine into one big dataset
+    df = pd.concat([c1, c2, c3, c4, c5], ignore_index=True)
+    df['CustomerID'] = range(1, len(df) + 1)
+
+    return df
 
 
 df = load_data()
@@ -53,6 +73,12 @@ features_scaled = scaler.fit_transform(features)
 st.sidebar.header("🛠️ Tool Selector")
 app_mode = st.sidebar.selectbox("Choose Activity",
                                 ["1. Cluster Analysis (K-Means/DBSCAN)", "2. Dimensionality Reduction (PCA/t-SNE)"])
+
+# --- DATASET VIEWER (Global Option) ---
+if st.sidebar.checkbox("📄 Show Generated Dataset"):
+    st.subheader("Raw Data (First 10 Rows)")
+    st.dataframe(df.head(10))
+    st.caption(f"Total Records: {len(df)} | Columns: AnnualIncome, SpendingScore, Age")
 
 
 # --- HELPER: COLOR PALETTE ---
@@ -73,12 +99,12 @@ if app_mode == "1. Cluster Analysis (K-Means/DBSCAN)":
 
     # Run Algorithm
     if algo_type == "K-Means":
-        k = st.sidebar.slider("Number of Clusters (k)", 2, 6, 3)
+        k = st.sidebar.slider("Number of Clusters (k)", 2, 8, 5)  # Default k=5 fits the synthetic data best
         model = KMeans(n_clusters=k, init='k-means++', random_state=42)
         df['Cluster'] = model.fit_predict(features_scaled)
     else:
         eps = st.sidebar.slider("Epsilon", 0.1, 2.0, 0.5, 0.1)
-        min_samples = st.sidebar.slider("Min Samples", 2, 10, 3)
+        min_samples = st.sidebar.slider("Min Samples", 2, 10, 5)
         model = DBSCAN(eps=eps, min_samples=min_samples)
         df['Cluster'] = model.fit_predict(features_scaled)
 
@@ -93,8 +119,8 @@ if app_mode == "1. Cluster Analysis (K-Means/DBSCAN)":
         label = 'Noise' if cluster == -1 else f'Cluster {cluster}'
         marker = 'x' if cluster == -1 else 'o'
 
-        ax.scatter(cluster_data['AnnualIncome'], cluster_data['SpendingScore'], c=[c], s=100, label=label,
-                   marker=marker, edgecolors='white')
+        ax.scatter(cluster_data['AnnualIncome'], cluster_data['SpendingScore'], c=[c], s=50, label=label, marker=marker,
+                   edgecolors='white', linewidth=0.5)
 
     ax.set_xlabel("Annual Income")
     ax.set_ylabel("Spending Score")
@@ -112,19 +138,19 @@ else:
     # 1. Choose Reduction Method
     dim_algo = st.sidebar.radio("Method", ["PCA", "t-SNE"])
 
-    # 2. Choose Color Overlay (The New Feature!)
+    # 2. Choose Color Overlay
     st.sidebar.markdown("---")
     st.sidebar.markdown("**🎨 Visualization Overlay**")
     color_by = st.sidebar.selectbox("Color Points By:", ["No Color", "K-Means Clusters", "DBSCAN Clusters"])
 
     # Calculate Colors based on selection
     if color_by == "K-Means Clusters":
-        k = st.sidebar.slider("K (for Coloring)", 2, 6, 3)
+        k = st.sidebar.slider("K (for Coloring)", 2, 8, 5)
         model = KMeans(n_clusters=k, random_state=42)
         labels = model.fit_predict(features_scaled)
         title_suffix = f" (Colored by K-Means, k={k})"
     elif color_by == "DBSCAN Clusters":
-        model = DBSCAN(eps=0.5, min_samples=3)
+        model = DBSCAN(eps=0.5, min_samples=5)
         labels = model.fit_predict(features_scaled)
         title_suffix = " (Colored by DBSCAN)"
     else:
@@ -137,7 +163,8 @@ else:
         coords = reducer.fit_transform(features_scaled)
         x_col, y_col = 'PCA1', 'PCA2'
     else:
-        perplexity = st.sidebar.slider("Perplexity", 2, 10, 3)
+        # NOTE: Higher Perplexity (e.g. 30) works better for this larger dataset
+        perplexity = st.sidebar.slider("Perplexity", 5, 50, 30)
         reducer = TSNE(n_components=2, perplexity=perplexity, random_state=42)
         coords = reducer.fit_transform(features_scaled)
         x_col, y_col = 't-SNE1', 't-SNE2'
@@ -161,8 +188,8 @@ else:
             label = 'Noise' if lbl == -1 else f'Cluster {lbl}'
 
         marker = 'x' if lbl == -1 else 'o'
-        ax.scatter(cluster_data[x_col], cluster_data[y_col], c=[c], s=100, label=label, marker=marker,
-                   edgecolors='black', alpha=0.8)
+        ax.scatter(cluster_data[x_col], cluster_data[y_col], c=[c], s=50, label=label, marker=marker,
+                   edgecolors='black', alpha=0.8, linewidth=0.5)
 
     ax.set_xlabel(x_col)
     ax.set_ylabel(y_col)
@@ -174,5 +201,6 @@ else:
     col1.pyplot(fig)
     col2.info("""
     **Interpretation:**
-    If you see distinct colored groups here, it means the clusters found in 3D space are well-separated even when flattened to 2D.
+    * **PCA:** Shows global spread. If you see overlapping colors, the clusters might be similar in some dimensions.
+    * **t-SNE:** Shows local groups. You should see distinct islands of color here with Perplexity ~30.
     """)
