@@ -558,23 +558,37 @@ The dashboard automatically interprets clusters and suggests marketing strategie
 ## 📁 Project Structure
 
 ```
-Customer-Segmentation-Studio/
+Customer-Segmentation-Project/
 │
+├── 📁 .venv/                    # Python virtual environment
+├── 📄 .gitignore                # Git ignore rules
 ├── 📄 app.py                    # Main Streamlit application
-├── 📄 requirements.txt          # Python dependencies
-├── 📄 README.md                 # This documentation
-│
-├── 📁 data/
-│   └── customers.csv            # Sample customer dataset
-│
-├── 📁 src/
-│   ├── clustering.py            # K-Means implementation
-│   ├── visualization.py         # Plotting functions
-│   └── business_logic.py        # Segment interpretation
-│
-└── 📁 assets/
-    └── demo.png                 # Screenshot for README
+└── 📄 README.md                 # This documentation
 ```
+
+---
+
+## 📄 License
+
+<div align="center">
+
+This project is licensed under the **MIT License**.
+
+```
+MIT License
+
+Copyright (c) 2024 [Your Name]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software...
+```
+
+See [LICENSE](LICENSE) for full details.
+
+</div>
 
 ---
 
@@ -582,14 +596,14 @@ Customer-Segmentation-Studio/
 
 <div align="center">
 
-### **Waqar Salim**
+### **Waqar Salim]**
 
 *Master's Student & IT Professional*
 
 ---
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/yourprofile)
-[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/yourusername)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/waqar-salim/)
+[![GitHub](https://img.shields.io/badge/GitHub-Follow-181717?style=for-the-badge&logo=github)](https://github.com/WSalim2024)
 
 ---
 
@@ -609,4 +623,3 @@ Customer-Segmentation-Studio/
 ```
 
 </div>
-****
