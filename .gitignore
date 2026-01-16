@@ -1,0 +1,26 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Caches
+.streamlit/
+.sass-cache/
+
+# Virtual Environments (Crucial to ignore these!)
+.venv/
+venv/
+env/
+
+# Data Files (Optional: Keep this if you want to share the dummy data, remove if data is private)
+# *.csv
+# *.xlsx
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
